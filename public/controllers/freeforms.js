@@ -26,12 +26,6 @@ app.controller('FreeformsController', ['$scope', 'datatransfer', '$sce', '$http'
           response.data.statuses.forEach(function (item) {
             item.text = $sce.trustAsHtml(showdownconverter.makeHtml(item.text));
           });
-          response.data.statuses = response.data.statuses.filter(function (item) {
-            if (item.name == datatransfer.name) {
-              return false;
-            }
-            return true;
-          });
           laststatusescount = response.data.laststatusescount;
           $scope.freeforms = response.data.statuses;
         

@@ -1,3 +1,4 @@
+var fs = require('fs');
 var express = require('express');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
@@ -7,7 +8,32 @@ var LONGPOLLING_TOTAL_WAIT = 280000; //less than 5 minutes
 var LONGPOLLLING_DELAY_STATUSES = 200; //in ms
 var LONGPOLLLING_DELAY_MESSAGES = 50; //in ms
 
-var games = {};
+var DATABASE_SAVE_INTERVAL = 300000;
+
+var DATABASE_FILENAME = './database.json';
+
+var games = null;
+try {
+    games = require(DATABASE_FILENAME);
+}
+catch (e) {
+    games = {};
+}
+
+var lastSaveLength = 0;
+
+function saveDatabase() {
+    var text = JSON.stringify(games);
+    if (text.length != lastSaveLength) {
+        fs.writeFile(DATABASE_FILENAME, text, function(err) {
+            if(err) {
+                return console.log(err);
+            }
+        }); 
+    }
+}
+
+setInterval(saveDatabase, DATABASE_SAVE_INTERVAL);
 
 function getGame(request, response) {
   // var name = request.headers.host;
