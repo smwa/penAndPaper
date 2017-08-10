@@ -1,0 +1,14 @@
+<div id="messages" style="height: calc(100% - 50px); overflow-y: scroll; word-wrap:break-word;">
+    <div ng-repeat="message in messages" ng-bind-html="message"></div>
+</div>
+
+<form ng-submit="sendMessage()">
+<div class="form-group">
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Message" ng-model="model.message" autofocus>
+        <span class="input-group-btn">
+            <button class="btn btn-secondary" type="submit">Send</button>
+        </span>
+    </div>
+</div>
+</form>

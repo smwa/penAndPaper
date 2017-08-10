@@ -1,0 +1,14 @@
+<div class="panel-group" id="accordion">
+
+    <div class="panel panel-default" ng-repeat="player in freeforms">
+            <div class="panel-heading pointer" data-toggle="collapse" data-parent="#accordion" ng-click="setOpened($index)">
+                <h4 class="panel-title">
+                    {{player.name}}
+                </h4>
+            </div>
+            <div id="freeform{{$index}}" class="panel-collapse collapse" ng-class="{in: $index == opened}">
+                <div class="panel-body" ng-bind-html="player.text"></div>
+            </div>
+    </div>
+
+</div>

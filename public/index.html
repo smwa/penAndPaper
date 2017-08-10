@@ -1,0 +1,27 @@
+<!doctype html>
+<html style="height: 100%">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.7.2/showdown.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="index.js"></script>
+
+    <!--Controllers-->
+    <script src="controllers/freeforms.js"></script>
+    <script src="controllers/freeform.js"></script>
+    <script src="controllers/messages.js"></script>
+
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body ng-app="pnp" style="height: 100%">
+    <div class="container-fluid" style="height: 100%">
+        <div class="row" style="height: 100%">
+            <div class="col-md-3" ng-include="'views/freeforms.html'" ng-controller="FreeformsController"></div>
+            <div class="col-md-6" style="height: 100%" ng-include="'views/messages.html'" ng-controller="MessagesController"></div>
+            <div class="col-md-3" style="height: 100%" ng-include="'views/freeform.html'" ng-controller="FreeformController"></div>
+        </div>
+    </div>
+</body>
+</html>
